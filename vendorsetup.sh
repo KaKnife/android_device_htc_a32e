@@ -1,0 +1,2 @@
+add_lunch_combo cm_a32e-eng
+add_lunch_combo cm_a32e-userdebug
