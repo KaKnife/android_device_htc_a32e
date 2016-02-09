@@ -14,7 +14,7 @@ else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 $(call inherit-product, build/target/product/full.mk)
@@ -24,9 +24,9 @@ PRODUCT_NAME := full_a32e
 PRODUCT_DEVICE := a32e
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.qcom \
-    ueventd.qcom.rc
+#PRODUCT_PACKAGES += \
+    fstab.a32e \
+    ueventd.a32e.rc
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
