@@ -1,6 +1,20 @@
-###########################
-# init.recovery.common.rc #
-###########################
+
+
+# HTC Embedded Log +++
+service htc_ebdlogd /sbin/htc_ebdlogd_recvy -s -k -F /sbin -p V
+    class core
+    user root
+    disabled
+    oneshot
+    ioprio idle 0
+    seclabel u:r:htc_ebdlogd:s0
+
+on property:ro.build.tags=test-keys
+    start htc_ebdlogd
+
+on property:ro.build.tags=release-keys
+    start htc_ebdlogd
+# HTC Embedded Log ---
 
 on fs
     mkdir /devlog 0700 root root
@@ -13,8 +27,12 @@ on fs
     mkdir /cota 0771 root cw_access
     mkdir /preload 0771 root cw_access
 
-on boot
+#on boot
     # Workaround for HTC; the recovery is disabled
     # by default in HTC's bootable/recovery/etc/init.rc.
     # Enable it here for projects w/o choice_fn.
-    start recovery
+    #start recovery
+
+service choice_fn /sbin/choice_fn
+    seclabel u:r:choice_fn:s0
+    oneshot
