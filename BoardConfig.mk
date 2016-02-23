@@ -7,7 +7,7 @@ TARGET_KERNEL_CONFIG := a32e_defconfig
 
 TARGET_ARCH := arm
 #TARGET_NO_BOOTLOADER := false
-#TARGET_BOARD_PLATFORM := msm8909
+TARGET_BOARD_PLATFORM := msm8909
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -34,9 +34,12 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 #qCom
-#BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_HARDWARE := true
 
 #TARGET_RECOVERY_FSTAB := device/htc/a32e/rootdir/etc/fstab.qcom
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
+
+BOARD_SEPOLICY_UNION += \
+    file_contexts
